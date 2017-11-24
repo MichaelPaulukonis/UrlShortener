@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using UrlShortner.Areas.HelpPage.ModelDescriptions;
-using UrlShortner.Areas.HelpPage.Models;
+using UrlShortener.Areas.HelpPage.ModelDescriptions;
+using UrlShortener.Areas.HelpPage.Models;
 
-namespace UrlShortner.Areas.HelpPage
+namespace UrlShortener.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

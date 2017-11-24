@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using UrlShortner.Areas.HelpPage.ModelDescriptions;
-using UrlShortner.Areas.HelpPage.Models;
+using UrlShortener.Areas.HelpPage.ModelDescriptions;
+using UrlShortener.Areas.HelpPage.Models;
 
-namespace UrlShortner.Areas.HelpPage.Controllers
+namespace UrlShortener.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace UrlShortner
+namespace UrlShortener
 {
     public class BundleConfig
     {

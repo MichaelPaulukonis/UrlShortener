@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace UrlShortner.Areas.HelpPage.ModelDescriptions
+namespace UrlShortener.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

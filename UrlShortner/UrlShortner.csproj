@@ -186,7 +186,6 @@
     </Compile>
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Models\UrlModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

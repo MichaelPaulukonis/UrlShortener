@@ -1,6 +1,6 @@
 using System;
 
-namespace UrlShortner.Areas.HelpPage.ModelDescriptions
+namespace UrlShortener.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

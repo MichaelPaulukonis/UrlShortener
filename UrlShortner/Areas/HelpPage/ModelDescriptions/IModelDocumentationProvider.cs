@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace UrlShortner.Areas.HelpPage.ModelDescriptions
+namespace UrlShortener.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

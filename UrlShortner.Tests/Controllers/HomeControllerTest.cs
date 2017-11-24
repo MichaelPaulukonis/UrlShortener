@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UrlShortner;
-using UrlShortner.Controllers;
+using UrlShortener;
+using UrlShortener.Controllers;
 
-namespace UrlShortner.Tests.Controllers
+namespace UrlShortener.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

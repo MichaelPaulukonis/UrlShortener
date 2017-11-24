@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace UrlShortner.Areas.HelpPage
+namespace UrlShortener.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

@@ -1,4 +1,4 @@
-namespace UrlShortner.Areas.HelpPage.ModelDescriptions
+namespace UrlShortener.Areas.HelpPage.ModelDescriptions
 {
     public class SimpleTypeModelDescription : ModelDescription
     {

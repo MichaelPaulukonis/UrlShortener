@@ -1,4 +1,4 @@
-namespace UrlShortner.Areas.HelpPage
+namespace UrlShortener.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

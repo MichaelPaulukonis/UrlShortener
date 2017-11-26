@@ -21,6 +21,7 @@ namespace UrlShortener.Models
 
     }
 
+    // TODO: unit tests
     public class UriRepository : IRepository<UriModel>
     {
         private Dictionary<string, UriModel> _repository = new Dictionary<string, UriModel>();
@@ -29,7 +30,8 @@ namespace UrlShortener.Models
 
         public IRepository<UriModel> Add(UriModel input)
         {
-            throw new NotImplementedException();
+            _repository.Add(input.ShortURI, input);
+            return this;
         }
 
         public IRepository<UriModel> Delete(UriModel input)
@@ -39,7 +41,7 @@ namespace UrlShortener.Models
 
         public UriModel Get(string key)
         {
-            throw new NotImplementedException();
+            return _repository[key];
         }
 
         public IRepository<UriModel> List()

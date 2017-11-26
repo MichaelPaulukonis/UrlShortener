@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Redirect";
+}
+
+<h2>Redirecting....</h2>
+
+<script>
+    var destination = '@ViewBag.Destination';
+    if (destination) window.location = destination;
+</script>
+

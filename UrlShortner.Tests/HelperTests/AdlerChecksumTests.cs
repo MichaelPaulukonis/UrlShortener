@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UrlShortener.Helpers;
 
-namespace UrlShortner.Tests.HelperTests
+namespace UrlShortener.Tests.HelperTests
 {
     [TestClass]
     public class AdlerChecksumTests

@@ -14,6 +14,12 @@ namespace UrlShortener
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Redirect",
+                url: "Redirect/{shorturi}",
+                defaults: new { controller = "Redirect", action = "Redirector", shorturi = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

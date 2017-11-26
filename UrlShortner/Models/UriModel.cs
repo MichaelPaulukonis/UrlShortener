@@ -31,7 +31,7 @@ namespace UrlShortener.Models
         // this will be user-provided token (email or otherwise) or auto-generated string
         public string ConfirmationCode { get; private set; }
         public string FullURI {
-            get { return $"{this.Schema}//{this.Location}"; }
+            get { return $"{this.Schema}{this.Location}"; }
             private set
             {
                 var uriRgx = Regex.Match(value, @"^([a-zA-Z]*://)(.*)$", RegexOptions.IgnoreCase);
@@ -39,6 +39,7 @@ namespace UrlShortener.Models
                 {
                     this.Schema = uriRgx.Groups[1].Value;
                     this.Location = uriRgx.Groups[2].Value;
+                    this.ShortLocation = util.Shorten(this.Location);
                 } else
                 {
                     throw new ArgumentException($"'{value}' is not a recognized URI schema.");
@@ -49,6 +50,7 @@ namespace UrlShortener.Models
         // TODO: technically, does the schema include or exclude "://" ?
         public string Schema { get; private set; }
         public string Location { get; private set; }
+        // this isn't the "short location" so much as it is a computed value that will be used as a key to retrieve the original
         public string ShortLocation { get; private set; }
     }
 }

@@ -9,11 +9,11 @@ namespace UrlShortener.Tests.Models
     public class UriModelTests
     {
         [TestMethod]
-        public void Instantiation_with_IShortener_throws_no_Exception()
+        public void Instantiation_with_Utility_throws_no_Exception()
         {
             try
             {
-                var util = new Shortener();
+                var util = new Utility();
                 var url = new UriModel(util);
             }
             catch (Exception ex)
@@ -24,12 +24,12 @@ namespace UrlShortener.Tests.Models
 
 
         [TestMethod]
-        public void Instantiation_with_IShortener_and_URI_throws_no_Exception()
+        public void Instantiation_with_Utility_and_URI_throws_no_Exception()
         {
             try
             {
                 var uri = "https://www.google.com";
-                var util = new Shortener();
+                var util = new Utility();
                 var url = new UriModel(util, uri);
             }
             catch (Exception ex)
@@ -39,10 +39,10 @@ namespace UrlShortener.Tests.Models
         }
 
         [TestMethod]
-        public void Instantiation_with_IShortener_and_URI_confirmation_token_not_null()
+        public void Instantiation_with_Utility_and_URI_confirmation_token_not_null()
         {
             var uri = "https://www.google.com";
-            var util = new Shortener();
+            var util = new Utility();
             var url = new UriModel(util, uri);
             Assert.IsNotNull(url.ConfirmationCode, "Confirmation code should be auto-populated when not provided");
         }
@@ -52,7 +52,7 @@ namespace UrlShortener.Tests.Models
         // shchema plus location (and everything)
         private UriModel Setup(string schema, string location)
         {
-            var util = new Shortener();
+            var util = new Utility();
             return new UriModel(util, $"{schema}{location}");
         }
 
@@ -72,7 +72,7 @@ namespace UrlShortener.Tests.Models
             var schema = "https://";
             var location = "www.google.com";
             var uri = Setup(schema, location);
-            var util = new Shortener();
+            var util = new Utility();
             var shorty = util.Shorten(schema + location);
             Assert.AreEqual(uri.ShortURI, shorty, "ShortUri should be a repeated shortened version of URI");
         }

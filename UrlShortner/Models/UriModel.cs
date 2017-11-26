@@ -9,26 +9,26 @@ namespace UrlShortener.Models
 {
     public class UriModel
     {
-        public UriModel(IShortener util)
+        public UriModel(Utility util)
         {
             this.util = util;
         }
 
-        public UriModel(IShortener util, string uri)
+        public UriModel(Utility util, string uri)
             // TODO: put this in the util, as well
             // the Uri does not need to know how to make a confirmation code, just to make one
-            : this(util, uri, Guid.NewGuid().ToString())
+            : this(util, uri, util.ConfirmationToken())
         {
         }
 
-        public UriModel(IShortener util, string uri, string confirmationcode)
+        public UriModel(Utility util, string uri, string confirmationcode)
             : this(util)
         {
             this.FullURI = uri;
             this.ConfirmationCode = confirmationcode;
         }
 
-        private readonly IShortener util;
+        private readonly Utility util;
 
         // this will be user-provided token (email or otherwise) or auto-generated string
         public string ConfirmationCode { get; private set; }

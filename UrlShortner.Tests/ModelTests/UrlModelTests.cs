@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UrlShortener.Models;
+using UrlShortener.Helpers;
 
 namespace UrlShortener.Tests.Models
 {
@@ -10,7 +11,8 @@ namespace UrlShortener.Tests.Models
         [TestMethod]
         public void Instantiation()
         {
-            var url = new UrlModel();
+            var util = new Shortener();
+            var url = new UrlModel(util);
         }
     }
 }

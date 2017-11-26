@@ -2,13 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using UrlShortener.Helpers;
 
 namespace UrlShortener.Models
 {
     public class UrlModel
     {
-        // this will be an email, or other provided token
-        public string UserId { get; private set; }
+        public UrlModel(IShortener util)
+        {
+            this.util = util;
+        }
+
+        public UrlModel(IShortener util, string uri, string confirmationcode)
+            :this(util)
+        {
+            this.FullURI = uri;
+            this.ConfirmationCode = confirmationcode;
+        }
+
+        private readonly IShortener util;
+
+        // this will be user-provided token (email or otherwise) or auto-generated string
+        public string ConfirmationCode { get; private set; }
         public string FullURI {
             get { return $"{this.Schema}//{this.Location}"; }
             private set

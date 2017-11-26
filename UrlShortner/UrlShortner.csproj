@@ -187,7 +187,7 @@
     <Compile Include="Helpers\AdlerCheckSum.cs" />
     <Compile Include="Models\IRepository.cs" />
     <Compile Include="Helpers\IShortener.cs" />
-    <Compile Include="Models\UrlModel.cs" />
+    <Compile Include="Models\UriModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -100,7 +100,7 @@
   <ItemGroup>
     <Compile Include="HelperTests\AdlerChecksumTests.cs" />
     <Compile Include="ModelTests\RepositoryTests.cs" />
-    <Compile Include="ModelTests\UrlModelTests.cs" />
+    <Compile Include="ModelTests\UriModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />

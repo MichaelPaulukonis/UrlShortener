@@ -13,7 +13,8 @@ namespace UrlShortner.Tests.HelperTests
             try
             {
                 var ac = new AdlerChecksum();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Assert.Fail($"Expected no exception but got: {ex.ToString()}");
             }
@@ -38,5 +39,7 @@ namespace UrlShortner.Tests.HelperTests
 
             Assert.AreEqual(chk1, chk2, "Multiple checksums are identical for same input string");
         }
+
+        // TODO: more tests for null, empty-string, etc. 
     }
 }

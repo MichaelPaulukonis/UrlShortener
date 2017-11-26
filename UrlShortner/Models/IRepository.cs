@@ -21,28 +21,28 @@ namespace UrlShortener.Models
 
     }
 
-    public class UriRepository : IRepository<UrlModel>
+    public class UriRepository : IRepository<UriModel>
     {
-        private Dictionary<string, UrlModel> _repository = new Dictionary<string, UrlModel>();
+        private Dictionary<string, UriModel> _repository = new Dictionary<string, UriModel>();
 
         public UriRepository() { }
 
-        public IRepository<UrlModel> Add(UrlModel input)
+        public IRepository<UriModel> Add(UriModel input)
         {
             throw new NotImplementedException();
         }
 
-        public IRepository<UrlModel> Delete(UrlModel input)
+        public IRepository<UriModel> Delete(UriModel input)
         {
             throw new NotImplementedException();
         }
 
-        public UrlModel Get(string key)
+        public UriModel Get(string key)
         {
             throw new NotImplementedException();
         }
 
-        public IRepository<UrlModel> List()
+        public IRepository<UriModel> List()
         {
             throw new NotImplementedException();
         }

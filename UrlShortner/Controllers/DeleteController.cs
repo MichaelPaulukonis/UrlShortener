@@ -17,14 +17,35 @@ namespace UrlShortener.Controllers
             return View(nameof(Delete), repo);
         }
 
-
-        // GET: Delete/Delete/{key}
-        public ActionResult Delete(string id)
+        [HttpPost]
+        public ActionResult Delete(string submit)
         {
             var repo = (UriRepository)Session["repo"];
-            repo.Delete(id);
+            repo.Delete(submit);
             return View(nameof(Delete), repo);
         }
+
+        // TODO: this is the ideal - prompt for confirmation token
+        // not yet implemented in the UI
+        // s/b a JQuery UI modal input popup. or something.
+        //[HttpPost]
+        //public ActionResult Delete(string id, string confirmationToken)
+        //{
+        //    var repo = (UriRepository)Session["repo"];
+        //    if (repo.Contains(id))
+        //    {
+        //        var uri = repo.Get(id);
+        //        if (uri.ConfirmationCode == confirmationToken)
+        //        {
+        //            repo.Delete(id);
+        //        }
+        //        else
+        //        {
+        //            // TODO: refuse to delete, and return message to user
+        //        }
+        //    }
+        //    return View(nameof(Delete), repo);
+        //}
 
     }
 }

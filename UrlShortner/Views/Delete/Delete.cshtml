@@ -1,27 +1,27 @@
 ﻿@*@model UrlShortener.Models.UriRepository
 
-@{
-    ViewBag.Title = "Delete";
-}
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>UriRepository</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    @{
+        ViewBag.Title = "Delete";
     }
-</div>*@
+
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>UriRepository</h4>
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>*@
 
 @using UrlShortener.Models;
 @using UrlShortener.ExtensionMethods
@@ -49,27 +49,31 @@
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">
-        <table class="help-page-table">
-            <thead>
-                <tr><th>URL</th><th>Short</th><th>Delete</th></tr>
-            </thead>
-            <tbody>
-                @foreach (var uri in Model)
+        @using (Html.BeginForm("Delete", "Delete"))
+        {
+            <table class="help-page-table">
+                <thead>
+                    <tr><th>URL</th><th>Short</th><th>Delete</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var uri in Model)
                 {
-                    <tr>
-                        <td class="api-name">
-                            @uri.FullURI
-                        </td>
-                        <td class="api-documentation">
-                            <a href="@Url.Content($"~/Redirect/{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + uri.ShortURI)</a>
-                        </td>
-                        <td>
-                            DELETE - checkbox? I dunno. this should be a form, I guess. Or something. UGH
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="api-name">
+                                @uri.FullURI
+                            </td>
+                            <td class="api-documentation">
+                                <a href="@Url.Content($"~/Redirect/{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + uri.ShortURI)</a>
+                            </td>
+                            <td>
+                                @*TODO: prompt for confirmation token*@
+                                <button type="submit" value="@uri.ShortURI" name="submit" class="btn btn-primary btn-sm">Delete this</button>
+                            </td>
+                        </tr>
 
-                }
-            </tbody>
-        </table>
+                    }
+                </tbody>
+            </table>
+        }
     </section>
 </div>

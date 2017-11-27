@@ -20,6 +20,10 @@ namespace UrlShortener.Controllers
         {
             // TODO: if key is not found, display message
             var repo = (UriRepository)Session["repo"];
+            if (repo == null || id == null || !repo.Contains(id))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             // "foo" and google are used for crude testin purposes
             // TODO: remove crude code when proper not-found handling is implemented
             ViewBag.Destination = (id == "foo" ? "http://www.google.com" : repo.Get(id).FullURI);

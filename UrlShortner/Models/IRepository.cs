@@ -44,11 +44,16 @@ namespace UrlShortener.Models
 
         public IRepository<UriModel> Delete(string key)
         {
-            if(_repository.ContainsKey(key))
+            if(key != null && _repository.ContainsKey(key))
             {
                 _repository.Remove(key);
             }
             return this;
+        }
+
+        public bool Contains(string key)
+        {
+            return _repository.ContainsKey(key);
         }
 
         public UriModel Get(string key)

@@ -1,0 +1,43 @@
+﻿@using UrlShortener.Models;
+@using UrlShortener.ExtensionMethods
+
+@model IRepository<UriModel>
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>List</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <p>
+                A list of existing URLS
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <table class="help-page-table">
+            <thead>
+                <tr><th>URL</th><th>Short</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var uri in Model)
+                {
+                    <tr>
+                        <td class="api-name">
+                            @uri.FullURI
+                        </td>
+                        <td class="api-documentation">
+                            <a href="@Url.Content($"~/Redirect/{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + uri.ShortURI)</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </section>
+</div>

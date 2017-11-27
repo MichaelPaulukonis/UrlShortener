@@ -7,7 +7,7 @@ using UrlShortener.Models;
 
 namespace UrlShortener.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -20,10 +20,26 @@ namespace UrlShortener.Controllers
 
             var repo = new UriRepository();
             var uri = new UriModel(new Helpers.Utility(), "http://www.michaelpaulukonis.com");
+            // TODO: controller's dependencies should be mocked!
             repo.Add(uri);
             Session["repo"] = repo;
 
-            return View();
+            var location = new LocationModel();
+            return View(location);
+        }
+
+        [HttpPost]
+        public ActionResult Shortened(LocationModel location)
+        {
+            var repo = (UriRepository)Session["repo"];
+            if (repo == null) { repo = new UriRepository(); }
+            var uri = new UriModel(new Helpers.Utility(), location.FullURI, location.ConfirmationCode);
+            repo.Add(uri);
+            uri = repo.Get(uri.ShortURI); // if uri already exists, use original confirmation token, etc.
+            Session["repo"] = repo;
+
+            return View(nameof(Shortened), uri.Location);
         }
     }
+
 }

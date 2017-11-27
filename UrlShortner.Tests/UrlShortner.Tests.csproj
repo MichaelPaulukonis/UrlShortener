@@ -112,9 +112,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UrlShortner\UrlShortner.csproj">
+    <ProjectReference Include="..\UrlShortner\UrlShortener.csproj">
       <Project>{CB2D2217-3C4A-4221-A288-B402DE792D9F}</Project>
-      <Name>UrlShortner</Name>
+      <Name>UrlShortener</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

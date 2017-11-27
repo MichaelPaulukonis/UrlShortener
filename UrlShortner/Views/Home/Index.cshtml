@@ -1,24 +1,20 @@
-﻿<div class="jumbotron">
+﻿@model  UrlShortener.Models.LocationModel
+
+<div class="jumbotron">
     <h1>Url Shortener</h1>
-    <p class="lead">Shortener URL the simple and naive way!.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+    <p class="lead">Shorten URLs the simple and naive way!</p>
+    @*TODO: link to deletion page*@
+    @*TODO: link to listing page*@
+    @using (Html.BeginForm("Shortened", "Home"))
+    {
+        <p>
+            @Html.LabelFor(m => m.FullURI)
+            @Html.TextBoxFor(m => m.FullURI, new { id = "FullURL", placeholdertext = "URL to be shortened" })
+        </p>
+        <p>
+            @Html.LabelFor(m => m.ConfirmationCode)
+            @Html.TextBoxFor(m => m.ConfirmationCode, new { placeholdertext = "optional code to delete short URL" })
+        </p>
+        <input type="submit" value="ShortenIt!" class="btn btn-primary btn-lg" />
+    }
 </div>

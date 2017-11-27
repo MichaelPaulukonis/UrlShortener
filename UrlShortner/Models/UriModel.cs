@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -9,9 +10,13 @@ namespace UrlShortener.Models
 {
     public class UriModel
     {
+        private LocationModel _location;
+        private readonly Utility _util;
+
         public UriModel(Utility util)
         {
-            this.util = util;
+            _util = util;
+            _location = new LocationModel();
         }
 
         public UriModel(Utility util, string uri)
@@ -25,27 +30,59 @@ namespace UrlShortener.Models
             : this(util)
         {
             this.FullURI = uri;
-            this.ConfirmationCode = confirmationcode;
+            this.ConfirmationCode = (string.IsNullOrEmpty(confirmationcode) ? util.ConfirmationToken() : confirmationcode);
         }
 
-        private readonly Utility util;
 
         // this will be user-provided token (email or otherwise) or auto-generated string
-        public string ConfirmationCode { get; private set; }
+        public string ConfirmationCode
+        {
+            get
+            {
+                return _location.ConfirmationCode;
+            }
+            private set
+            {
+                _location.ConfirmationCode = value;
+            }
+        }
+
         private string _uri;
         public string FullURI
         {
             get
-            { return _uri; }
+            { return _location.FullURI; }
             private set
             {
-                _uri = value;
-                this.ShortURI = util.Shorten(value);
+                _location.FullURI = value;
+                _location.ShortURI = _util.Shorten(value);
             }
         }
 
         // this isn't the "short location" so much as it is a computed value that will be used as a key to retrieve the original
-        public string ShortURI { get; private set; }
+        public string ShortURI
+        {
+            get
+            {
+                return _location.ShortURI;
+            }
+        }
 
+        public LocationModel Location
+        {
+            get
+            {
+                return _location;
+            }
+        }
+    }
+
+    // TODO: use this inside of UriModel
+    public class LocationModel
+    {
+        public string ConfirmationCode { get; set; }
+        [DisplayName("Full Url")]
+        public string FullURI { get; set; }
+        public string ShortURI { get; set; }
     }
 }

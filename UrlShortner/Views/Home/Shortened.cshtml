@@ -1,0 +1,25 @@
+﻿@model  UrlShortener.Models.LocationModel
+@using UrlShortener.ExtensionMethods
+
+<div class="jumbotron">
+    <h1>Url Shortener</h1>
+    <p class="lead">Shorten URLs the simple and naive way!</p>
+    @*TODO: link to deletion page*@
+    @*TODO: link to listing page*@
+
+    <p>
+        @Html.LabelFor(m => m.FullURI)
+        @Html.DisplayTextFor(m => m.FullURI)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.ConfirmationCode)
+        @Html.DisplayTextFor(m => m.ConfirmationCode)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.ShortURI)
+        <a href="@Url.Content($"~/Redirect/{Model.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + Model.ShortURI)</a>
+        
+    </p>
+</div>
+

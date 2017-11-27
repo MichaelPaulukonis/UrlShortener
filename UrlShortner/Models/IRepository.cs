@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace UrlShortener.Models
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : IEnumerable<T>
     {
 
         // TODO: add, get, delete, list
         // for both users and URIs
         IRepository<T> Add(T input);
 
-        IRepository<T> List();
+        //IRepository<T> List();
 
         IRepository<T> Delete(T input);
 
         T Get(string key);
-
     }
 
     // TODO: unit tests
@@ -30,13 +30,25 @@ namespace UrlShortener.Models
 
         public IRepository<UriModel> Add(UriModel input)
         {
-            _repository.Add(input.ShortURI, input);
+            if (!_repository.ContainsKey(input.ShortURI))
+            {
+                _repository.Add(input.ShortURI, input);
+            }
             return this;
         }
 
         public IRepository<UriModel> Delete(UriModel input)
         {
-            throw new NotImplementedException();
+            return Delete(input.ShortURI);
+        }
+
+        public IRepository<UriModel> Delete(string key)
+        {
+            if(_repository.ContainsKey(key))
+            {
+                _repository.Remove(key);
+            }
+            return this;
         }
 
         public UriModel Get(string key)
@@ -44,12 +56,17 @@ namespace UrlShortener.Models
             return _repository[key];
         }
 
-        public IRepository<UriModel> List()
+        public IEnumerator<UriModel> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _repository.Values.ToList().GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _repository.Values.ToList().GetEnumerator();
         }
     }
 
- 
+  
 
 }

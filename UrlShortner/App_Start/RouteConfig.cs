@@ -15,8 +15,8 @@ namespace UrlShortener
 
             routes.MapRoute(
                 name: "Redirect",
-                url: "Redirect/{shorturi}",
-                defaults: new { controller = "Redirect", action = "Redirector", shorturi = UrlParameter.Optional }
+                url: "Redirect/{id}",
+                defaults: new { controller = "Redirect", action = "Redirector", id = UrlParameter.Optional }
                 );
 
             routes.MapRoute(

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using UrlShortener.Models;
 
-namespace UrlShortner.Controllers
+namespace UrlShortener.Controllers
 {
-    public class RedirectController : Controller
+    public class RedirectController : BaseController
     {
         // GET: Redirect
         public ActionResult Redirect()
@@ -16,13 +16,13 @@ namespace UrlShortner.Controllers
         }
 
 
-        public ActionResult Redirector(string shortUri)
+        public ActionResult Redirector(string id)
         {
             // TODO: if key is not found, display message
             var repo = (UriRepository)Session["repo"];
             // "foo" and google are used for crude testin purposes
             // TODO: remove crude code when proper not-found handling is implemented
-            ViewBag.Destination = (shortUri == "foo" ? "http://www.google.com" : repo.Get(shortUri).FullURI);
+            ViewBag.Destination = (id == "foo" ? "http://www.google.com" : repo.Get(id).FullURI);
             return View(nameof(Redirect));
         }
     }

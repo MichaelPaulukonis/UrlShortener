@@ -1,29 +1,4 @@
-﻿@*@model UrlShortener.Models.UriRepository
-
-    @{
-        ViewBag.Title = "Delete";
-    }
-
-    <h2>Delete</h2>
-
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>UriRepository</h4>
-        <hr />
-        <dl class="dl-horizontal">
-        </dl>
-
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>*@
-
-@using UrlShortener.Models;
+﻿@using UrlShortener.Models;
 @using UrlShortener.ExtensionMethods
 
 @model IRepository<UriModel>
@@ -63,7 +38,7 @@
                                 @uri.FullURI
                             </td>
                             <td class="api-documentation">
-                                <a href="@Url.Content($"~/Redirect/{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + uri.ShortURI)</a>
+                                <a href="@Url.Content($"~/x{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("x" + uri.ShortURI)</a>
                             </td>
                             <td>
                                 @*TODO: prompt for confirmation token*@

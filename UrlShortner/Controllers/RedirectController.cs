@@ -24,9 +24,8 @@ namespace UrlShortener.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            // "foo" and google are used for crude testin purposes
-            // TODO: remove crude code when proper not-found handling is implemented
-            ViewBag.Destination = (id == "foo" ? "http://www.google.com" : repo.Get(id).FullURI);
+
+            ViewBag.Destination = repo.Get(id).FullURI;
             return View(nameof(Redirect));
         }
     }

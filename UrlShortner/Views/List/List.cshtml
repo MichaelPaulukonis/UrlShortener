@@ -32,7 +32,7 @@
                             @uri.FullURI
                         </td>
                         <td class="api-documentation">
-                            <a href="@Url.Content($"~/Redirect/{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("Redirect/" + uri.ShortURI)</a>
+                            <a href="@Url.Content($"~/x{uri.ShortURI}")">@Request.GetBaseUrl()@Url.Content("x" + uri.ShortURI)</a>
                         </td>
                     </tr>
 

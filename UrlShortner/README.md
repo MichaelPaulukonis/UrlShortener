@@ -8,10 +8,27 @@ The application should be able to redirect from the shortened url to the origina
 
 # Notes
 
-I started with a UserModel, but deleted it. We don't need to worry about User tracking and authentication that way - and it's not part of the specs.
+If a URL already exists in the repository, it shouldn't be/can't be added twice.
+"Shouldn't" because duplication
+"Can't" because implementation means keys will be identical
+So, if somebody wants to delete a shorturl, maybe they should provide an authentication token
+While this is part of the models, there's not prompting on the Delete page, so we're not using this now.
 
-However, URLs need to be deleted, and there should be _some way_ of limiting this.
-So we will store an email (or some other user-provided token?) when shrinking a URL.
-To delete a given short-URL, the same token must be provided.
+Code is sadly crude.
 
-That's somewhat naive, but suitable for our current purposes.
+Unit-Testing started out well, but I realized I was getting bogged down in testing models that didn't reflect actual usage.
+
+And once I started implementing usage, I didn't go back and add more tests.
+Which fail, becuase I'm using a Session var.
+
+The repository started simple in-memory with plans to use a file-based or localDB-based version, but never got to that phase of implementation.
+
+Project was started as Web API with the intention of having separate API and web-app projects, but ended up being all bollixed together.
+
+Page layouts use the default Bootstrap template. Lists use the default Web API Help Pages layout and CSS.
+CSS should have been pruned and renamed, since classes refer to api elements.
+vendor JS has not been pruned, either.
+Bundling and minification has not been implemented.
+Naming is not consistent.
+There is no logging.
+Error handling is default behavior, for the most-part.
